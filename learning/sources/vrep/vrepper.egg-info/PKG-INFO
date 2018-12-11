@@ -1,0 +1,27 @@
+Metadata-Version: 1.1
+Name: vrepper
+Version: 0.0.6
+Summary: V-REP python wrapper
+Home-page: https://github.com/fgolemo/vrepper
+Author: Florian Golemo
+Author-email: fgolemo@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: If you have Python and V-Rep the robot simulator 
+        software installed, why not combine both? This library let's you 
+        access the V-Rep API in a bit more humane way the native implementation 
+        (V-Rep ships with its own Python API, but it's a bit harder to use). 
+        This library gives you a lot of convenience and includes an example for 
+        OpenAI Gym integration. This codebase is an extension of ctmakro's
+        https://github.com/ctmakro/vrepper who provided all the basic functions -
+        so without their effort this wouldn't have been possible.
+        
+Keywords: robotics vrep control simulation gym
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6

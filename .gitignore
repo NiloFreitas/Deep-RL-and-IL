@@ -1,0 +1,16 @@
+__pycache__/
+learning/unity-environment.log
+learning/auxiliar/EpisodeLengths.txt
+learning/auxiliar/EpisodeRewards.txt
+learning/auxiliar/AccLengths.txt
+learning/auxiliar/AccRewards.txt
+learning/auxiliar/Plot.png
+learning/sources/unity/*.x86_64
+learning/sources/unity/3dball_Data/
+learning/sources/carla/CarlaLogs.txt
+learning/sources/carla/CarlaUE4.sh
+learning/sources/carla/CarlaUE4/
+learning/sources/carla/Engine/
+learning/sources/carla/PythonClient/
+learning/core
+
