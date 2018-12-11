@@ -3,7 +3,7 @@ learning/unity-environment.log
 learning/auxiliar/EpisodeLengths.txt
 learning/auxiliar/EpisodeRewards.txt
 learning/auxiliar/AccLengths.txt
-learning/auxiliar/AccRewards.txt
+learning/auxiliar/TimeRewards.txt
 learning/auxiliar/Plot.png
 learning/sources/unity/*.x86_64
 learning/sources/unity/3dball_Data/

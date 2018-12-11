@@ -50,6 +50,7 @@ The simulation platforms currently integrated are:
 - PyGame
 - Unity Machine Learning
 - CARLA
+- V-Rep
 
 The datasets currently avaliable are:
 

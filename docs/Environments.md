@@ -1,8 +1,8 @@
 ## Enviroments
 
 The suppported Environments are in the [sources](../learning/sources) folder.  
-The [source.py](../reinforcement/sources/source.py) contains the parent class.  
-Currently, there are interfaces with [OpenAI's Gym](https://github.com/NiloFreitas/Deep-Reinforcement-Learning/blob/master/reinforcement/sources/source_gym.py), [PyGame](https://github.com/NiloFreitas/Deep-Reinforcement-Learning/blob/master/reinforcement/sources/source_pygame.py), [Unity ML](https://github.com/NiloFreitas/Deep-Reinforcement-Learning/blob/master/reinforcement/sources/source_unity.py) and [CARLA](https://github.com/carla-simulator/carla).  
+The [source.py](../learning/sources/source.py) contains the parent class.  
+Currently, the integrated platforms are [OpenAI's Gym](https://github.com/NiloFreitas/Deep-Reinforcement-Learning/blob/master/reinforcement/sources/source_gym.py), [PyGame](https://github.com/NiloFreitas/Deep-Reinforcement-Learning/blob/master/reinforcement/sources/source_pygame.py), [Unity ML](https://github.com/NiloFreitas/Deep-Reinforcement-Learning/blob/master/reinforcement/sources/source_unity.py), [CARLA](https://github.com/carla-simulator/carla) and [V-Rep](http://www.coppeliarobotics.com/)
 
 The Environments in the folder are:
 
@@ -20,6 +20,7 @@ Vector Inputs (1 dimension):
 			- Reacher
 	- Unity Machine Learning
 		- 3D Ball
+	- V-Rep
 
 Image Inputs (2 dimensions):  
 
@@ -53,5 +54,10 @@ Execute this function on the algorithm when a saved trained model of the env is 
 	                              envname = "3dball",
 				      nnoutput =  "Actor/Mu/MatMul" </sub>  
 
-3)  To use [CARLA](https://github.com/carla-simulator/carla) download the compiled version and put the files in the _/sources/carla/_ folder  
-    Credits to the code in _sources/carla/Environment/_:  [Gokul](https://github.com/GokulNC/Setting-Up-CARLA-RL)
+3) To use [CARLA](https://github.com/carla-simulator/carla) download the compiled version and put the files in the _/sources/carla/_ folder
+
+### Credits
+
+1) Credits to the code (CARLA interface) in _sources/carla/Environment/_: [Gokul](https://github.com/GokulNC/Setting-Up-CARLA-RL)
+
+2) Credits to the code (V-Rep interface) in _sources/vrep/_: [fgolemo](https://github.com/fgolemo/vrepper)
