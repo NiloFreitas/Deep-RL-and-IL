@@ -32,10 +32,10 @@ def plot_states( prev_state , curr_state ):
 ### SAVE STATISTICS
 def plot_episode_stats(episode_lengths, episode_rewards, accumulated_lenghts, time_rewards):
 
-    np.savetxt('../auxiliar/EpisodeLengths.txt', episode_lengths,     fmt='%.5f', newline='\n')
-    np.savetxt('../auxiliar/EpisodeRewards.txt', episode_rewards,     fmt='%.5f', newline='\n')
-    np.savetxt('../auxiliar/AccLengths.txt',     accumulated_lenghts, fmt='%.5f', newline='\n')
-    np.savetxt('../auxiliar/TimeRewards.txt',    time_rewards,        fmt='%.5f', newline='\n')
+    np.savetxt('./auxiliar/EpisodeLengths.txt', episode_lengths,     fmt='%.5f', newline='\n')
+    np.savetxt('./auxiliar/EpisodeRewards.txt', episode_rewards,     fmt='%.5f', newline='\n')
+    np.savetxt('./auxiliar/AccLengths.txt',     accumulated_lenghts, fmt='%.5f', newline='\n')
+    np.savetxt('./auxiliar/TimeRewards.txt',    time_rewards,        fmt='%.5f', newline='\n')
 
     # Plot the episode length over time
     fig1 = plt.figure(figsize=(20, 10))
@@ -68,6 +68,6 @@ def plot_episode_stats(episode_lengths, episode_rewards, accumulated_lenghts, ti
     plt.ylabel("Accumulated Length")
     plt.title("Accumulated Length over Steps")
 
-    plt.savefig('../auxiliar/Plot.png')
+    plt.savefig('./auxiliar/Plot.png')
 
     plt.close()

@@ -36,6 +36,7 @@ There are some flags that can be used:
 --record (save trajectories)
 ```
 There are many [**scripts**](../learning/scripts/) to facilitate usage, and  saved [**trained_models**](../learning/trained_models/).
+Please run the scripts from [**learning**](../learning/) the folder, e.g.: ./scripts/script.sh
 
 ## TensorBlock
 
