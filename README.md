@@ -79,7 +79,7 @@ The [statistics](statistics/) folder is used to save trained models and metric's
 - MatplotLib 2.0.2
 - Unity ML 0.3
 - MuJoCo 1.50
-- CARLA 0.8.3
+- CARLA 0.9.2
 
 ## Bibliography
 

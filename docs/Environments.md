@@ -54,10 +54,8 @@ Execute this function on the algorithm when a saved trained model of the env is 
 	                              envname = "3dball",
 				      nnoutput =  "Actor/Mu/MatMul" </sub>  
 
-3) To use [CARLA](https://github.com/carla-simulator/carla) download the compiled version and put the files in the _/sources/carla/_ folder
+3) To use [CARLA](https://github.com/carla-simulator/carla) download the [ 0.9.2 compiled version](https://github.com/carla-simulator/carla/releases/tag/0.9.2) and put the files in the _/sources/carla/_ folder
 
 ### Credits
 
-1) Credits to the code (CARLA interface) in _sources/carla/Environment/_: [Gokul](https://github.com/GokulNC/Setting-Up-CARLA-RL)
-
-2) Credits to the code (V-Rep interface) in _sources/vrep/_: [fgolemo](https://github.com/fgolemo/vrepper)
+1) Credits to the code (V-Rep interface) in _sources/vrep/_: [fgolemo](https://github.com/fgolemo/vrepper)
