@@ -4,14 +4,14 @@ from players_reinforcement.player_PPO_2 import *
 # PLAYER PPO
 class player_PPO_2A( player_PPO_2 ):
 
-    NUM_FRAMES    = 1
+    NUM_FRAMES    = 3
     LEARNING_RATE = 3e-4
     UPDATE_SIZE   = 5
     BATCH_SIZE    = 256
     EPSILON       = 0.2
     GAMMA         = 0.99
     LAM           = 0.95
-    rgb           = 3 # 1 if black and white
+    rgb           = 1 # 1 if black and white
 
     ### __INIT__
     def __init__( self ):

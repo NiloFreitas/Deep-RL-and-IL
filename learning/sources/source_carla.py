@@ -81,7 +81,7 @@ class source_carla( source ):
         #for i in range( 1 ):
         #    plt.subplot( 2 , 1 , i + 1 )
         #    plt.imshow( obsv[:,:] , cmap = 'gray' )
-        #plt.savefig('./auxiliar/matrix.png')
+        #plt.savefig('./auxiliar/rgb.png')
         #plt.close()
 
         return obsv

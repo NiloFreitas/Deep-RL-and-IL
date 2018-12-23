@@ -12,5 +12,6 @@ learning/sources/carla/CarlaUE4.sh
 learning/sources/carla/CarlaUE4/
 learning/sources/carla/Engine/
 learning/sources/carla/PythonClient/
+learning/sources/carla/PythonAPI/
 learning/core
 

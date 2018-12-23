@@ -87,7 +87,6 @@ from carla import ColorConverter as cc
 from agents.navigation.roaming_agent import *
 from agents.navigation.basic_agent import *
 
-
 # ==============================================================================
 # -- Global functions ----------------------------------------------------------
 # ==============================================================================
@@ -167,6 +166,37 @@ class World(object):
         for actor in actors:
             if actor is not None:
                 actor.destroy()
+
+    def add_npcs( self, number_of_vehicles):
+
+        blueprints = self.world.get_blueprint_library().filter('vehicle.*')
+        blueprints = [x for x in blueprints if int(x.get_attribute('number_of_wheels')) == 4]
+        blueprints = [x for x in blueprints if not x.id.endswith('isetta')]
+
+        actor_list = []
+
+        def try_spawn_random_vehicle_at(transform):
+            blueprint = random.choice(blueprints)
+            if blueprint.has_attribute('color'):
+                color = random.choice(blueprint.get_attribute('color').recommended_values)
+                blueprint.set_attribute('color', color)
+            blueprint.set_attribute('role_name', 'autopilot')
+            vehicle = self.world.try_spawn_actor(blueprint, transform)
+            if vehicle is not None:
+                actor_list.append(vehicle)
+                vehicle.set_autopilot()
+                return True
+            return False
+
+        spawn_points = list(self.world.get_map().get_spawn_points())
+        random.shuffle(spawn_points)
+        count = number_of_vehicles
+
+        for spawn_point in spawn_points:
+            if try_spawn_random_vehicle_at(spawn_point):
+                count -= 1
+            if count <= 0:
+                break
 
     def _get_random_blueprint(self):
         bp = random.choice(self.world.get_blueprint_library().filter('vehicle'))
@@ -607,6 +637,7 @@ class CarlaEnv:
     # INIT
     def init( self, args ):
 
+        # Connect
         pygame.init()
         pygame.font.init()
 
@@ -620,15 +651,22 @@ class CarlaEnv:
             except:
                  pass
 
-        # Fixed parameters
+        # FIXED PARAMETERS
+        # Image size
         self.w, self.h = args.width, args.height
+        # World coordinates
         spawn_points = self.client.get_world().get_map().get_spawn_points()
         #self.spawn_point = random.choice(spawn_points) if spawn_points else carla.Transform()
         self.spawn_point = spawn_points[0] if spawn_points else carla.Transform()                     # Spawn point
         self.start_pos_x, self.start_pos_y = self.spawn_point.location.x, self.spawn_point.location.y # Start points
         self.final_pos_x, self.final_pos_y = 7.5, 300                                                 # Final points
+        # Intersection points
+        self.inter_x_left  = self.start_pos_x - 0.47
+        self.inter_x_right = self.start_pos_x + 0.93
+        # Auxiliar
         self.low_vel = 0
 
+        # Init
         self.display = pygame.display.set_mode(
             (args.width, args.height),
             pygame.HWSURFACE | pygame.DOUBLEBUF)
@@ -637,23 +675,25 @@ class CarlaEnv:
         self.controller = KeyboardControl(self.world, args.autopilot)
         self.clock = pygame.time.Clock()
 
+        # Actor list
+        self.actor_list = self.world.world.get_actors()
+
+        # Spawn NPCs
+        self.world.add_npcs(5)
 
     # STEP
     def step( self, actn ):
 
-        # Get car info
-        self.car_x = self.world.vehicle.get_transform().location.x
-        self.car_y = self.world.vehicle.get_transform().location.y
-        vel = self.world.vehicle.get_velocity()
-        self.car_vel = math.sqrt(vel.x**2 + vel.y**2 + vel.z**2)
-        if self.car_vel < 0.1: self.low_vel += 1
+        # Car info list
+        self.car_id, self.car_theta, self.car_x, self.car_y, self.car_vel = self.get_car_info()
+        self.car_info = [self.car_id, self.car_theta, self.car_x, self.car_y, self.car_vel]
 
         # Map actn to pressed keys
         self.keys = list(pygame.key.get_pressed())
         self.keys = self.map_actions(self.keys, actn)
 
         # Return info (obs, rewd, done)
-        obsv = self.get_obsv()[0]
+        obsv, collision = self.get_obsv()
         rewd = self.get_rewd()
         done = self.get_done()
 
@@ -706,8 +746,25 @@ class CarlaEnv:
 
         return done
 
+	# GET CURRENT CAR INFO
+    def get_car_info( self ):
+
+        # Get car id
+        car_id = self.world.vehicle.id
+        # Position
+        car_x = self.world.vehicle.get_transform().location.x
+        car_y = self.world.vehicle.get_transform().location.y
+        # Theta
+        car_theta = self.world.vehicle.get_transform().rotation.yaw
+        # Speed
+        vel = self.world.vehicle.get_velocity()
+        car_vel = math.sqrt(vel.x**2 + vel.y**2 + vel.z**2)
+        if car_vel < 0.2: self.low_vel += 1
+
+        return car_id, car_theta, car_x, car_y, car_vel
+
     # MAP ACTIONS
-    def map_actions(self, keys, actn):
+    def map_actions( self, keys, actn ):
 
         # Throttle
         if actn[0]:
