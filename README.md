@@ -2,7 +2,7 @@
 
 This open source software enables experiments of Deep RL and IL algorithms in many integrated environments, for simulation and analysis with a unified framework. This scalable system is built using TensorFlow and the TensorBlock API.
 
-[Full Monograph](http://www.tcc.sc.usp.br/tce/disponiveis/18/182500/tce-14052019-112022/publico/Resende_Nilo_tcc.pdf)
+[Full Monograph](http://www.tcc.sc.usp.br/tce/disponiveis/18/182500/tce-14052019-112022/)
 
 Experiments can be run in many available simulation platforms, and some visualization of performace obtained.
 
