@@ -16,6 +16,7 @@ The structure of the system is shown below, where the blue boxes refers to the l
 <div align="center">
 <img align="center" width="300" src="docs/images/tBlockDiagram.png">
 </div>
+
 ## Background
 
 <div align="center">
